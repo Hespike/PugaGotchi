@@ -4,24 +4,56 @@ public class Mopsz {
     int kedv = 62;
     int energia = 62;
     int rendetlenseg = 62;
-
-    public void eszik(){
-        switch("jutalom") {
-            case "jutalom":
+    String nev;
+    String tulajdonosNev;
+/*
+    public Mopsz(String nev){
+        this.nev = "Mopszi";
+        this.tulajdonosNev = "jatekos";
+        this.jollakotsag = 62;
+        this.egeszseg = 62;
+        this.kedv = 62;
+        this.energia = 62;
+        this.rendetlenseg = 62;
+    }
+*/
+    public void eszik(int masodikUtasitas, int penz){
+        switch(masodikUtasitas) {
+            case 1:
                 jollakotsag += 10;
-            case "szaraz":
+                energia -= 3;
+                penz -= 4;
+                break;
+            case 2:
                 jollakotsag += 20;
-            case "csont":
+                energia -= 3;
+                penz -= 8;
+                break;
+            case 3:
                 jollakotsag += 23;
-            case "hazikoszt":
+                energia -= 3;
+                penz -= 10;
+                break;
+            case 4:
                 jollakotsag += 15;
-            case "viz":
+                energia -= 3;
+                penz -= 6;
+                break;
+            case 5:
                 jollakotsag += 7;
-            case "konzerv":
+                energia -= 3;
+                penz -= 3;
+                break;
+            case 6:
                 jollakotsag += 30;
-            case "energiaital":
+                energia -= 3;
+                penz -= 13;
+                break;
+            case 7:
                 jollakotsag += 20;
-                energia += 15;
+                energia += 12;
+                penz -= 20;
+                break;
         }
     }
 
