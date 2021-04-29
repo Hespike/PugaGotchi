@@ -4,20 +4,11 @@ public class Mopsz {
     int kedv = 62;
     int energia = 62;
     int rendetlenseg = 62;
+    public static int penz = 1500;
     String nev;
     String tulajdonosNev;
-/*
-    public Mopsz(String nev){
-        this.nev = "Mopszi";
-        this.tulajdonosNev = "jatekos";
-        this.jollakotsag = 62;
-        this.egeszseg = 62;
-        this.kedv = 62;
-        this.energia = 62;
-        this.rendetlenseg = 62;
-    }
-*/
-    public void eszik(int masodikUtasitas, int penz){
+
+    public void eszik(int masodikUtasitas){
         switch(masodikUtasitas) {
             case 1:
                 jollakotsag += 10;
@@ -97,4 +88,13 @@ public class Mopsz {
         this.rendetlenseg = rendetlenseg;
     }
 
+    public int getPenz() {
+        return penz;
+    }
+
+    public void setPenz(int penz) {
+        this.penz = penz;
+    }
+
 }
+
