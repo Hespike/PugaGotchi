@@ -9,6 +9,7 @@ public class Mopsz {
     public static int penz = 1500;
     String nev;
     String tulajdonosNev;
+    Random random = new Random();
 
     public void eszik(int masodikUtasitas){
         switch(masodikUtasitas) {
@@ -84,7 +85,6 @@ public class Mopsz {
                 break;
             case 2: //labdás játék
                 energia -= 18;
-                Random random = new Random();
                 egeszseg -= random.nextInt(9 - 0) + 0;
                 rendetlenseg -= 5;
                 break;
@@ -102,6 +102,27 @@ public class Mopsz {
 
         }
     }
+
+    public void dolgozik(int masodikUtasitas) {
+        switch (masodikUtasitas) {
+            case 1: // újságkihordás
+                penz += 50;
+                energia -= 10;
+                egeszseg -= 4;
+                break;
+            case 2: //rendőri segítség
+                penz += 100;
+                energia -= 25;
+                egeszseg -= random.nextInt(15 - 0) + 0;
+                break;
+            case 3: //házőrzés
+                penz += random.nextInt(200 - 30) + 30;
+                energia -= random.nextInt(30 - 8) + 8;
+                egeszseg -= random.nextInt(20 - 10) + 10;
+                break;
+        }
+    }
+
     public int getJollakotsag() {
         return jollakotsag;
     }
