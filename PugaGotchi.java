@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class PugaGotchi {
     public static void main(String[] args) {
         int kor = 0, elsoUtasitas = 0, masodikUtasitas = 0;
+        boolean rendetlensegKicsi = false;
 
         Mopsz mopszi = new Mopsz();
         mopszi.getJollakotsag();
@@ -17,9 +18,13 @@ public class PugaGotchi {
             kor++;
             System.out.println("Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.penz + ". Jóllakotság: " + mopszi.jollakotsag + ". Egészség: " + mopszi.egeszseg + ". Kedv: " + mopszi.kedv + ". Energia: " + mopszi.energia + ". Rendetlenség: " + mopszi.rendetlenseg + ".");
 
-            System.out.println("Mit szeretnél csinálni? Írd be a megfelelő számot!\r\n1: Étel vásárlása\r\n2: Egészségesebbé tenni a kutyust\r\n3: Irány játszani!\r\n6: Irány dolgozni!");
-
-
+            System.out.println("Mit szeretnél csinálni? Írd be a megfelelő számot!\r\n1: Étel vásárlása\r\n2: Egészségesebbé tenni a kutyust\r\n3: Irány játszani!");
+            System.out.println(mopszi.rendetlenseg < 40 ?"4: Irány dolgozni!" : "\r");
+           if (mopszi.rendetlenseg < 40) {
+                rendetlensegKicsi = true;
+            } else{
+                rendetlensegKicsi = false;
+            }
             Scanner sc = new Scanner(System.in);
             String utasitas = sc.next();
             elsoUtasitas = Integer.parseInt(utasitas);
@@ -40,7 +45,7 @@ public class PugaGotchi {
                     masodikUtasitas = Integer.parseInt(utasitas);
                     mopszi.egeszsegFenntart(masodikUtasitas);
                     break;
-                case 3:
+                case 3: //játék
                     System.out.println("Mit szeretnétek játszani?\r\n1: Sétáljunk (energia: -10, egészség: -4)\r\n2: Labdázzunk (energia: -18,egészség: -(0-9) közötti érték, rendetlenség: -5)\r\n3: Irány a kutyaiskola (pénz: -10, energia: -20, egészség: -5, rendetlenség: -50)\r\n4: Játszunk a parkban (energia: -10, egészség: -10, rendetlenség - 10)");
                     sc = new Scanner(System.in);
                     utasitas = sc.next();
@@ -48,9 +53,20 @@ public class PugaGotchi {
                     mopszi.jatszik(masodikUtasitas);
 
                     break;
-                case 4:
+                case 4:// játék, csak akkor, ha a rendetlenség 40 alatt van
+                    if (rendetlensegKicsi = true) {
+                        System.out.println("Mit szeretnétek dolgozni?\r\n1: Újságkihordás (pénz: +50, energia: -10, egészség: -4)\r\n2:Rendőri segítség (pénz: +100, energia: -25, egészség: -(0-15) közötti érték)\r\n3: Házőrzés (pénz: +(30-200) közötti érték, energia: -(8-30) közötti érték) egészség: -(10-20) közötti érték)");
+                        sc = new Scanner(System.in);
+                        utasitas = sc.next();
+                        masodikUtasitas = Integer.parseInt(utasitas);
+                        mopszi.dolgozik(masodikUtasitas);
+                        break;
+                    } else if (rendetlensegKicsi = false) {
                     break;
-        }
+                }
+
+            }
+
 
 
             System.out.println("Az általad választott utasítás: " + elsoUtasitas + " és " + masodikUtasitas);
@@ -59,3 +75,5 @@ public class PugaGotchi {
 
     }
 }
+
+
