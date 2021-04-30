@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Mopsz {
     int jollakotsag = 62;
     int egeszseg = 62;
@@ -70,6 +72,33 @@ public class Mopsz {
                  rendetlenseg = 100;
                  penz -= 100;
                  break;
+
+        }
+    }
+
+    public void jatszik(int masodikUtasitas) {
+        switch (masodikUtasitas) {
+            case 1: // sétáltatás
+                energia -= 10;
+                egeszseg -= 4;
+                break;
+            case 2: //labdás játék
+                energia -= 18;
+                Random random = new Random();
+                egeszseg -= random.nextInt(9 - 0) + 0;
+                rendetlenseg -= 5;
+                break;
+            case 3: //kutyaiskola
+                penz -= -10;
+                energia -= 20;
+                egeszseg -= 5;
+                rendetlenseg -= 50;
+                break;
+            case 4: //játék a parkban
+                energia -= 10;
+                egeszseg -= 10;
+                rendetlenseg -= 10;
+                break;
 
         }
     }
