@@ -2,9 +2,7 @@ import java.util.Scanner;
 
 public class PugaGotchi {
     public static void main(String[] args) {
-        int kor = 0;
-        int elsoUtasitas = 0;
-        int masodikUtasitas = 0;
+        int kor = 0, elsoUtasitas = 0, masodikUtasitas = 0;
 
         Mopsz mopszi = new Mopsz();
         mopszi.getJollakotsag();
@@ -33,13 +31,20 @@ public class PugaGotchi {
                     utasitas = sc.next();
                     masodikUtasitas = Integer.parseInt(utasitas);
                     mopszi.eszik(masodikUtasitas);
-            }
-           /*
-                  case 2: //egészség fenntartás
-               System.out.println("Mit szeretnél tenni? ");
+                    break;
 
-           }
-*/
+                case 2: //egészség fenntartás
+                    System.out.println("Mit szeretnél enni?\r\n1: Kis életcsomag vásárlása (egészség: +25, pénz: -6)\r\n2: Nagy életcsomag vásárlása (egészség: +50, pénz: -25)\r\n3: Irány a doktor! (egészség: az értéke 100%-ra vált, pénz: -25)\r\n4: Maximalizáló ital vásárlása (Minden tulajdonság 100%-ra áll, pénz: -100)");
+                    sc = new Scanner(System.in);
+                    utasitas = sc.next();
+                    masodikUtasitas = Integer.parseInt(utasitas);
+                    mopszi.egeszsegFenntart(masodikUtasitas);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+        }
 
 
             System.out.println("Az általad választott utasítás: " + elsoUtasitas + " és " + masodikUtasitas);
@@ -48,4 +53,3 @@ public class PugaGotchi {
 
     }
 }
-
