@@ -48,6 +48,31 @@ public class Mopsz {
         }
     }
 
+    public void egeszsegFenntart(int masodikUtasitas) {
+        switch (masodikUtasitas) {
+            case 1: // kis életcsomag
+                egeszseg += 25;
+                penz -= 6;
+                break;
+            case 2: //nagy életcsomag
+                egeszseg += 50;
+                penz -= 10;
+                break;
+            case 3: //állatorvos
+                egeszseg = 100;
+                penz -= 25;
+                break;
+            case 4: //maximalizáló ital
+                 jollakotsag = 100;
+                 egeszseg = 100;
+                 kedv = 100;
+                 energia = 100;
+                 rendetlenseg = 100;
+                 penz -= 100;
+                 break;
+
+        }
+    }
     public int getJollakotsag() {
         return jollakotsag;
     }
@@ -97,4 +122,3 @@ public class Mopsz {
     }
 
 }
-
