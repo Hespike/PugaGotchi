@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Mopsz {
-    private static int penz = 1500;
+    private static int penz = 6;
     private static Random random = new Random();
     private int jollakotsag = 62;
     private int egeszseg = 62;
@@ -20,34 +20,62 @@ public class Mopsz {
     private int energiaItal = 0;
     Scanner sc = new Scanner(System.in);
 //ételvétel
-    public void jutalomVetel(){
-    setJutalom(getJutalom() + 1);
-    setPenz(getPenz() - 4);
+    public void jutalomVetel() {
+        if (getPenz() >= 4) {
+            setJutalom(getJutalom() + 1);
+            setPenz(getPenz() - 4);
+        } else {
+            System.out.println("Ehhez az akcióhoz 4 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
+        }
     }
     public void szarazVetel(){
-    setSzaraz(getSzaraz() + 1);
-    setPenz(getPenz() - 8);
+        if (getPenz() >= 8) {
+            setSzaraz(getSzaraz() + 1);
+            setPenz(getPenz() - 8);
+        } else {
+            System.out.println("Ehhez az akcióhoz 8 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     public void csontVetel(){
+        if (getPenz() >= 10) {
     setCsont(getCsont() + 1);
     setPenz(getPenz() - 10);
+    } else {
+        System.out.println("Ehhez az akcióhoz 10 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     public void haziVetel(){
+        if (getPenz() >= 6) {
     setHazi(getHazi() + 1);
     setPenz(getPenz() - 6);
+        } else {
+        System.out.println("Ehhez az akcióhoz 6 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     public void vizVetel(){
+        if (getPenz() >= 3) {
     setViz(getViz() + 1);
     setPenz(getPenz() - 3);
+        } else {
+        System.out.println("Ehhez az akcióhoz 3 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     public void konzervVetel(){
+        if (getPenz() >= 13) {
     setKonzerv(getKonzerv() + 1);
     setPenz(getPenz() - 13);
+        } else {
+        System.out.println("Ehhez az akcióhoz 13 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     public void energiaItalVetel(){
+        if (getPenz() >= 20) {
     setEnergiaItal(getEnergiaItal() + 1);
         setPenz(getPenz() - 20);
+    } else {
+        System.out.println("Ehhez az akcióhoz 20 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
     }
+}
     //ételelfogyasztás
     public void jutalomEves(){
         if (getJutalom() > 0) {
@@ -273,24 +301,40 @@ public class Mopsz {
     public void egeszsegFenntart(int masodikUtasitas) {
         switch (masodikUtasitas) {
             case 1: // kis életcsomag
-                setEgeszseg(getEgeszseg() + 25);
-                setPenz(getPenz() - 6);
+                if (getPenz() >= 6 ) {
+                    setEgeszseg(getEgeszseg() + 25);
+                    setPenz(getPenz() - 6);
+                } else {
+                    System.out.println("Ehhez az akcióhoz 6 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
+                }
                 break;
             case 2: //nagy életcsomag
+                if (getPenz() >= 10 ) {
                 setEgeszseg(getEgeszseg() + 50);
                 setPenz(getPenz() - 10);
+                } else {
+                    System.out.println("Ehhez az akcióhoz 10 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
+                }
                 break;
             case 3: //állatorvos
+                if (getPenz() >= 25 ) {
                 setEgeszseg(getEgeszseg() + 100);
                 setPenz(getPenz() - 25);
+                } else {
+                    System.out.println("Ehhez az akcióhoz 25 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
+                }
                 break;
             case 4: //maximalizáló ital
+                if (getPenz() >= 100 ) {
                 setJollakotsag(100);
                 setEgeszseg(100);
                 setKedv(100);
                 setEnergia(100);
                 setRendetlenseg(100);
                 setPenz(getPenz() - 100);
+        } else {
+            System.out.println("Ehhez az akcióhoz 100 pénzre lenne szükséged, viszont neked " + getPenz() + " van.");
+        }
                 break;
             default:
                 System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
@@ -370,3 +414,4 @@ public class Mopsz {
     }
 
 }
+
