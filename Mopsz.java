@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Mopsz {
     //Class variables
@@ -13,6 +14,7 @@ public class Mopsz {
     private int rendetlenseg = 62;
     private String nev;
     private String tulajdonos;
+    Scanner sc = new Scanner(System.in);
 
     //Getter-setters
     public static int getPenz() {
@@ -85,57 +87,75 @@ public class Mopsz {
 
 
     private static int clamp(int value) {
-        if(value > 100) {
+        if (value > 100) {
             return 100;
-        } else if(value < 0) {
-            return 0;
-        }
-        return value;
-    }
-    private static int clampMoney(int value) {
-        if(value < 0) {
+        } else if (value < 0) {
             return 0;
         }
         return value;
     }
 
+    private static int clampMoney(int value) {
+        if (value < 0) {
+            return 0;
+        }
+        return value;
+    }
+
+
+    public void bemutatkozas() {
+        System.out.println("Üdv! Hogy hívnak téged?");
+        this.tulajdonos = sc.next();
+        System.out.println("Jó szórakozást " + getTulajdonos() + "!");
+    }
+
+    public void kutyaBemutatkozas() {
+        System.out.println("Hogy hívják a kutyusod?");
+        this.nev = sc.next();
+        if (nev.equals("progegykaro")) {
+            System.out.println("Áhh, " + getNev() + ". Ez egy rémisztő név.");
+        } else {
+            System.out.println("Áhh, " + getNev() + ". Ez egy kiváló név.");
+        }
+    }
+
     //Instance methods
-    public void eszik(int masodikUtasitas){
-        switch(masodikUtasitas) {
+    public void eszik(int masodikUtasitas) {
+        switch (masodikUtasitas) {
             case 1:
                 setJollakotsag(getJollakotsag() + 10);
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 4);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 4);
                 break;
             case 2:
                 setJollakotsag(getJollakotsag() + 20); //<3
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 8);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 8);
                 break;
             case 3:
                 setJollakotsag(getJollakotsag() + 23);
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 10);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 10);
                 break;
             case 4:
                 setJollakotsag(getJollakotsag() + 15);
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 6);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 6);
                 break;
             case 5:
                 setJollakotsag(getJollakotsag() + 7);
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 3);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 3);
                 break;
             case 6:
                 setJollakotsag(getJollakotsag() + 30);
-                setEnergia(getEnergia()- 3);
-                setPenz(getPenz()- 13);
+                setEnergia(getEnergia() - 3);
+                setPenz(getPenz() - 13);
                 break;
             case 7:
                 setJollakotsag(getJollakotsag() + 20);
                 setEnergia(getEnergia() + 3);
-                setPenz(getPenz()- 20);
+                setPenz(getPenz() - 20);
                 break;
             default:
                 System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
@@ -206,7 +226,7 @@ public class Mopsz {
             case 1: // újságkihordás
                 setPenz(getPenz() + 50);
                 setEnergia(getEnergia() - 10);
-                setEgeszseg(getEgeszseg() -4);
+                setEgeszseg(getEgeszseg() - 4);
                 break;
             case 2: //rendőri segítség
                 setPenz(getPenz() + 100);
@@ -222,12 +242,26 @@ public class Mopsz {
                 System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
                 break;
         }
+        penzCheck();
     }
 
-    public void alszik(){
+    public void alszik() {
         setEnergia(getEnergia() + random.nextInt(50 - 30) + 30);
         setJollakotsag(getJollakotsag() - 8);
         setEgeszseg(getEgeszseg() - 5);
     }
-    
+
+    public void veszitett() {
+        System.out.println("Veszítettél! Nincs több köröd! " + getNev() + " örökké szegény marad, és ez csakis neked köszönhető, " + getTulajdonos() + "!");
+        System.exit(0);
+    }
+
+    public void penzCheck() {
+        if (penz >= 10000) {
+            System.out.println("Gratulálunk, nyertél! Elértél 10000 pénzt! " + getNev() + " mostmár gazdag, és ez csakis neked köszönhető, " + getTulajdonos() + "!");
+            System.exit(0);
+        }
+    }
+
 }
+
