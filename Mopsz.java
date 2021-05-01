@@ -11,6 +11,56 @@ public class Mopsz {
     String tulajdonosNev;
     Random random = new Random();
 
+    //
+    //getterek-setterek
+    public int getJollakotsag() {
+        return jollakotsag;
+    }
+
+    public void setJollakotsag(int jollakotsag) {
+        this.jollakotsag = jollakotsag;
+    }
+
+    public int getEgeszseg() {
+        return egeszseg;
+    }
+
+    public void setEgeszseg(int egeszseg) {
+        this.egeszseg = egeszseg;
+    }
+
+    public int getKedv() {
+        return kedv;
+    }
+
+    public void setKedv(int kedv) {
+        this.kedv = kedv;
+    }
+
+    public int getEnergia() {
+        return energia;
+    }
+
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
+    public int getRendetlenseg() {
+        return rendetlenseg;
+    }
+
+    public void setRendetlenseg(int rendetlenseg) {
+        this.rendetlenseg = rendetlenseg;
+    }
+
+    public int getPenz() {
+        return penz;
+    }
+
+    public void setPenz(int penz) {
+        this.penz = penz;
+    }
+
     public void eszik(int masodikUtasitas){
         switch(masodikUtasitas) {
             case 1:
@@ -190,53 +240,6 @@ public class Mopsz {
 
 
 
-    //getterek-setterek
-    public int getJollakotsag() {
-        return jollakotsag;
-    }
 
-    public void setJollakotsag(int jollakotsag) {
-        this.jollakotsag = jollakotsag;
-    }
-
-    public int getEgeszseg() {
-        return egeszseg;
-    }
-
-    public void setEgeszseg(int egeszseg) {
-        this.egeszseg = egeszseg;
-    }
-
-    public int getKedv() {
-        return kedv;
-    }
-
-    public void setKedv(int kedv) {
-        this.kedv = kedv;
-    }
-
-    public int getEnergia() {
-        return energia;
-    }
-
-    public void setEnergia(int energia) {
-        this.energia = energia;
-    }
-
-    public int getRendetlenseg() {
-        return rendetlenseg;
-    }
-
-    public void setRendetlenseg(int rendetlenseg) {
-        this.rendetlenseg = rendetlenseg;
-    }
-
-    public int getPenz() {
-        return penz;
-    }
-
-    public void setPenz(int penz) {
-        this.penz = penz;
-    }
 
 }
