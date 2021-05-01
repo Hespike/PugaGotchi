@@ -1,10 +1,13 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class PugaGotchi {
     public static void main(String[] args) {
         int kor = 0, elsoUtasitas = 0, masodikUtasitas = 0;
         boolean rendetlensegKicsi = false;
-
+        int koszosKutya = 0;
+        boolean ujKor = true;
+        Random random = new Random();
         Mopsz mopszi = new Mopsz();
         mopszi.getJollakotsag();
         mopszi.getEgeszseg();
@@ -15,12 +18,25 @@ public class PugaGotchi {
 
 
         while (kor < 100 && mopszi.penz < 100000) {
-            kor++;
-            System.out.println("Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.penz + ". Jóllakotság: " + mopszi.jollakotsag + ". Egészség: " + mopszi.egeszseg + ". Kedv: " + mopszi.kedv + ". Energia: " + mopszi.energia + ". Rendetlenség: " + mopszi.rendetlenseg + ".");
+            if(ujKor == true){
+                ujKor = false;
+                System.out.println("Új kör kezdődik!");
+                kor++;
+                koszosKutya = random.nextInt(100 - 0) + 0;
+                if (koszosKutya <= 40) {
+                    System.out.println("A kutyus koszos. Irány fürdeni! Nyugi, ez nem kerül pénzbe! *sad doge noises*");
+                } else {
+                    System.out.println("A kutyus tiszta. Hiphip. Ma nem kell fürödni. *happy doge noises*");
+                }
+            } else {
 
+            }
+
+            System.out.println("Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.penz + ". Jóllakotság: " + mopszi.jollakotsag + ". Egészség: " + mopszi.egeszseg + ". Kedv: " + mopszi.kedv + ". Energia: " + mopszi.energia + ". Rendetlenség: " + mopszi.rendetlenseg + ".");
             System.out.println("Mit szeretnél csinálni? Írd be a megfelelő számot!\r\n1: Étel vásárlása\r\n2: Egészségesebbé tenni a kutyust\r\n3: Irány játszani!");
-            System.out.println(mopszi.rendetlenseg < 40 ?"4: Irány dolgozni!" : "\r");
-           if (mopszi.rendetlenseg < 40) {
+            System.out.print(mopszi.rendetlenseg < 40 ?"4: Irány dolgozni!\r\n" : "");
+            System.out.println("5: Irány aludni!\r\n");
+            if (mopszi.rendetlenseg < 40) {
                 rendetlensegKicsi = true;
             } else{
                 rendetlensegKicsi = false;
@@ -45,35 +61,51 @@ public class PugaGotchi {
                     masodikUtasitas = Integer.parseInt(utasitas);
                     mopszi.egeszsegFenntart(masodikUtasitas);
                     break;
-                case 3: //játék
-                    System.out.println("Mit szeretnétek játszani?\r\n1: Sétáljunk (energia: -10, egészség: -4)\r\n2: Labdázzunk (energia: -18,egészség: -(0-9) közötti érték, rendetlenség: -5)\r\n3: Irány a kutyaiskola (pénz: -10, energia: -20, egészség: -5, rendetlenség: -50)\r\n4: Játszunk a parkban (energia: -10, egészség: -10, rendetlenség - 10)");
-                    sc = new Scanner(System.in);
-                    utasitas = sc.next();
-                    masodikUtasitas = Integer.parseInt(utasitas);
-                    mopszi.jatszik(masodikUtasitas);
-
-                    break;
-                case 4:// játék, csak akkor, ha a rendetlenség 40 alatt van
-                    if (rendetlensegKicsi = true) {
-                        System.out.println("Mit szeretnétek dolgozni?\r\n1: Újságkihordás (pénz: +50, energia: -10, egészség: -4)\r\n2:Rendőri segítség (pénz: +100, energia: -25, egészség: -(0-15) közötti érték)\r\n3: Házőrzés (pénz: +(30-200) közötti érték, energia: -(8-30) közötti érték) egészség: -(10-20) közötti érték)");
+                case 3: //játék, csak akkor ha az energia 10 felett van
+                    if (mopszi.energia < 10) {
+                        System.out.println("A kutyus túl fáradt!!! Így csak enni vagy aludni van ereje.");
+                        break;
+                    } else {
+                        System.out.println("Mit szeretnétek játszani?\r\n1: Sétáljunk (energia: -10, egészség: -4)\r\n2: Labdázzunk (energia: -18,egészség: -(0-9) közötti érték, rendetlenség: -5)\r\n3: Irány a kutyaiskola (pénz: -10, energia: -20, egészség: -5, rendetlenség: -50)\r\n4: Játszunk a parkban (energia: -10, egészség: -10, rendetlenség - 10)");
                         sc = new Scanner(System.in);
                         utasitas = sc.next();
                         masodikUtasitas = Integer.parseInt(utasitas);
-                        mopszi.dolgozik(masodikUtasitas);
-                        break;
-                    } else if (rendetlensegKicsi = false) {
+                        mopszi.jatszik(masodikUtasitas);
+                    }
                     break;
-                }
+                case 4:// munka, csak akkor, ha a rendetlenség 40 alatt van, és az energia 10 felett
+                    if (mopszi.rendetlenseg < 40) {
+                        if (mopszi.energia < 10) {
+                            System.out.println("A kutyus túl fáradt!!! Így csak enni vagy aludni van ereje.");
+                            break;
+                        } else {
+                            System.out.println("Mit szeretnétek dolgozni?\r\n1: Újságkihordás (pénz: +50, energia: -10, egészség: -4)\r\n2:Rendőri segítség (pénz: +100, energia: -25, egészség: -(0-15) közötti érték)\r\n3: Házőrzés (pénz: +(30-200) közötti érték, energia: -(8-30) közötti érték) egészség: -(10-20) közötti érték)");
+                            sc = new Scanner(System.in);
+                            utasitas = sc.next();
+                            masodikUtasitas = Integer.parseInt(utasitas);
+                            mopszi.dolgozik(masodikUtasitas);
+                            break;
+                        }
+                    } else if (mopszi.rendetlenseg >= 40) {
+                        System.out.println("Szép próbálkozás, de a kutyus rendetlensége túl magas, nem tud dolgozni így!");
+                        break;
+                    }
+                case 5: //
+                    System.out.println("Szép álmokat kutyus!");
+                    mopszi.alszik();
+                    ujKor = true;
+                    break;
+
+                default:
+                    System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                    break;
 
             }
-
-
-
-            System.out.println("Az általad választott utasítás: " + elsoUtasitas + " és " + masodikUtasitas);
 
         }
 
     }
 }
+
 
 
