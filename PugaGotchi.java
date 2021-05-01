@@ -32,14 +32,14 @@ public class PugaGotchi {
             System.out.println("Tulajdonos neve: " + mopszi.getTulajdonos() + ". Kutyus neve: " + mopszi.getNev() + ". Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.getPenz() + ". Jóllakotság: " + mopszi.getJollakotsag() + ". Egészség: " + mopszi.getEgeszseg() + ". Kedv: " + mopszi.getKedv() + ". Energia: " + mopszi.getEnergia() + ". Rendetlenség: " + mopszi.getRendetlenseg() + ".");
             System.out.println("Mit szeretnél csinálni? Írd be a megfelelő számot!\r\n1: Étellel kapcsolatos dolog, az biztos...\r\n2: Legyen egészségesebb  " + mopszi.getNev() + "! \r\n3: Irány játszani!");
             System.out.print(mopszi.getRendetlenseg() < 40 ? "4: Irány dolgozni!\r\n" : "");
-            System.out.println("5: Irány aludni!\r\n");
+            System.out.println("5: Irány aludni!");
             sc = new Scanner(System.in);
             String utasitas = sc.next();
             elsoUtasitas = Integer.parseInt(utasitas);
 
             switch (elsoUtasitas) {
                 case 1: //étkezés
-                    System.out.println("De mit szeretnél pontosan csinálni  az étellel? \r\n 1: Vásárolni.\r\n 2: Megnézni mit bír a kutyám megenni.");
+                    System.out.println("De mit szeretnél pontosan csinálni  az étellel? \r\n1: Vásárolni.\r\n2: Megnézni mit bír a kutyám megenni.");
                     sc = new Scanner(System.in);
                     utasitas = sc.next();
                     masodikUtasitas = Integer.parseInt(utasitas);
@@ -165,7 +165,7 @@ public class PugaGotchi {
                             break;
 
                         default:
-                            System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                            System.out.println("Ez sajnos nem sikerült! A terminálon kiírt számok közül egyet írj be.");
                             break;
 
                     }
