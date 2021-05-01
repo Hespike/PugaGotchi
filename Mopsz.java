@@ -2,11 +2,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Mopsz {
-    //Class variables
     private static int penz = 1500;
     private static Random random = new Random();
-
-    //Instance variables
     private int jollakotsag = 62;
     private int egeszseg = 62;
     private int kedv = 62;
@@ -14,9 +11,165 @@ public class Mopsz {
     private int rendetlenseg = 62;
     private String nev;
     private String tulajdonos;
+    private int jutalom = 0;
+    private int szaraz = 0;
+    private int csont = 0;
+    private int hazi = 0;
+    private int viz = 0;
+    private int konzerv = 0;
+    private int energiaItal = 0;
     Scanner sc = new Scanner(System.in);
+//ételvétel
+    public void jutalomVetel(){
+    setJutalom(getJutalom() + 1);
+    setPenz(getPenz() - 4);
+    }
+    public void szarazVetel(){
+    setSzaraz(getSzaraz() + 1);
+    setPenz(getPenz() - 8);
+    }
+    public void csontVetel(){
+    setCsont(getCsont() + 1);
+    setPenz(getPenz() - 10);
+    }
+    public void haziVetel(){
+    setHazi(getHazi() + 1);
+    setPenz(getPenz() - 6);
+    }
+    public void vizVetel(){
+    setViz(getViz() + 1);
+    setPenz(getPenz() - 3);
+    }
+    public void konzervVetel(){
+    setKonzerv(getKonzerv() + 1);
+    setPenz(getPenz() - 13);
+    }
+    public void energiaItalVetel(){
+    setEnergiaItal(getEnergiaItal() + 1);
+        setPenz(getPenz() - 20);
+    }
+    //ételelfogyasztás
+    public void jutalomEves(){
+        if (getJutalom() > 0) {
+            setJollakotsag(getJollakotsag() + 10);
+            setEnergia(getEnergia() - 3);
+            setJutalom(getJutalom() - 1);
+        } else {
+            System.out.println("A semmit nehéz elfogyasztani.");
+        }
+    }
+    public void szarazEves() {
+        if (getSzaraz() > 0) {
+            setJollakotsag(getJollakotsag() + 20);
+            setEnergia(getEnergia() - 3);
+            setSzaraz(getSzaraz() - 1);
+        } else {
+            System.out.println("A semmit nehéz elfogyasztani.");
+        }
+    }
+    public void csontEves(){
+        if (getCsont() > 0) {
+        setJollakotsag(getJollakotsag() + 23);
+        setEnergia(getEnergia() - 3);
+        setCsont(getCsont() - 1);
+    } else {
+        System.out.println("A semmit nehéz elfogyasztani.");
+    }
+}
+    public void haziEves(){
+        if (getHazi() > 0) {
+        setJollakotsag(getJollakotsag() + 15);
+        setEnergia(getEnergia() - 3);
+        setHazi(getHazi() - 1);
+    } else {
+        System.out.println("A semmit nehéz elfogyasztani.");
+    }
+}
+    public void vizIvas(){
+        if (getViz() > 0) {
+        setJollakotsag(getJollakotsag() + 7);
+        setEnergia(getEnergia() - 3);
+        setViz(getViz() - 1);
+    } else {
+        System.out.println("A semmit nehéz elfogyasztani.");
+    }
+}
+    public void konzervEves(){
+        if (getKonzerv() > 0) {
+        setJollakotsag(getJollakotsag() + 30);
+        setEnergia(getEnergia() - 3);
+        setKonzerv(getKonzerv() - 1);
+    } else {
+        System.out.println("A semmit nehéz elfogyasztani.");
+    }
+}
+    public void energiaItalIvas(){
+        if (getEnergiaItal() > 0) {
+        setJollakotsag(getJollakotsag() + 20);
+        setEnergia(getEnergia() + 12);
+        setEnergiaItal(getEnergiaItal() - 1);
+    } else {
+        System.out.println("A semmit nehéz elfogyasztani.");
+    }
+}
 
     //Getter-setters
+    public int getJutalom() {
+        return jutalom;
+    }
+
+    public void setJutalom(int jutalom) {
+        this.jutalom = jutalom;
+    }
+
+    public int getSzaraz() {
+        return szaraz;
+    }
+
+    public void setSzaraz(int szaraz) {
+        this.szaraz = szaraz;
+    }
+
+    public int getCsont() {
+        return csont;
+    }
+
+    public void setCsont(int csont) {
+        this.csont = csont;
+    }
+
+    public int getHazi() {
+        return hazi;
+    }
+
+    public void setHazi(int hazi) {
+        this.hazi = hazi;
+    }
+
+    public int getViz() {
+        return viz;
+    }
+
+    public void setViz(int viz) {
+        this.viz = viz;
+    }
+
+    public int getKonzerv() {
+        return konzerv;
+    }
+
+    public void setKonzerv(int konzerv) {
+        this.konzerv = konzerv;
+    }
+
+    public int getEnergiaItal() {
+        return energiaItal;
+    }
+
+    public void setEnergiaItal(int energiaItal) {
+        this.energiaItal = energiaItal;
+    }
+
     public static int getPenz() {
         return penz;
     }
@@ -33,9 +186,6 @@ public class Mopsz {
         this.jollakotsag = clamp(jollakotsag);
     }
 
-    public void jollakotsagNovel(int value) {
-        setJollakotsag(getJollakotsag() + value);
-    }
 
     public int getEgeszseg() {
         return egeszseg;
@@ -119,49 +269,6 @@ public class Mopsz {
         }
     }
 
-    //Instance methods
-    public void eszik(int masodikUtasitas) {
-        switch (masodikUtasitas) {
-            case 1:
-                setJollakotsag(getJollakotsag() + 10);
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 4);
-                break;
-            case 2:
-                setJollakotsag(getJollakotsag() + 20); //<3
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 8);
-                break;
-            case 3:
-                setJollakotsag(getJollakotsag() + 23);
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 10);
-                break;
-            case 4:
-                setJollakotsag(getJollakotsag() + 15);
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 6);
-                break;
-            case 5:
-                setJollakotsag(getJollakotsag() + 7);
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 3);
-                break;
-            case 6:
-                setJollakotsag(getJollakotsag() + 30);
-                setEnergia(getEnergia() - 3);
-                setPenz(getPenz() - 13);
-                break;
-            case 7:
-                setJollakotsag(getJollakotsag() + 20);
-                setEnergia(getEnergia() + 3);
-                setPenz(getPenz() - 20);
-                break;
-            default:
-                System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
-                break;
-        }
-    }
 
     public void egeszsegFenntart(int masodikUtasitas) {
         switch (masodikUtasitas) {
@@ -188,7 +295,6 @@ public class Mopsz {
             default:
                 System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
                 break;
-
         }
     }
 
@@ -264,4 +370,3 @@ public class Mopsz {
     }
 
 }
-
