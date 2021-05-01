@@ -8,16 +8,8 @@ public class PugaGotchi {
         boolean ujKor = true;
         Random random = new Random();
         Mopsz mopszi = new Mopsz();
-        //Ezek mik lol? lekéred az értékeket, de nincsenek sehol eltárolva
-        mopszi.getJollakotsag();
-        mopszi.getEgeszseg();
-        mopszi.getKedv();
-        mopszi.getEnergia();
-        mopszi.getRendetlenseg();
-        mopszi.getPenz();
 
-
-        while (kor < 100 && mopszi.penz < 100000) {
+        while (kor < 100 && mopszi.getPenz() < 100000) {
             if (ujKor == true) {
                 ujKor = false;
                 System.out.println("Új kör kezdődik!");
@@ -30,9 +22,9 @@ public class PugaGotchi {
                 }
             }
 
-                System.out.println("Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.penz + ". Jóllakotság: " + mopszi.jollakotsag + ". Egészség: " + mopszi.egeszseg + ". Kedv: " + mopszi.kedv + ". Energia: " + mopszi.energia + ". Rendetlenség: " + mopszi.rendetlenseg + ".");
+                System.out.println("Aktuális kör: " + kor + ". Pénzmennyiség: " + mopszi.getPenz() + ". Jóllakotság: " + mopszi.getJollakotsag() + ". Egészség: " + mopszi.getEgeszseg() + ". Kedv: " + mopszi.getKedv() + ". Energia: " + mopszi.getEnergia() + ". Rendetlenség: " + mopszi.getRendetlenseg() + ".");
                 System.out.println("Mit szeretnél csinálni? Írd be a megfelelő számot!\r\n1: Étel vásárlása\r\n2: Egészségesebbé tenni a kutyust\r\n3: Irány játszani!");
-                System.out.print(mopszi.rendetlenseg < 40 ? "4: Irány dolgozni!\r\n" : "");
+                System.out.print(mopszi.getRendetlenseg() < 40 ? "4: Irány dolgozni!\r\n" : "");
                 System.out.println("5: Irány aludni!\r\n");
                 Scanner sc = new Scanner(System.in);
                 String utasitas = sc.next();
@@ -55,7 +47,7 @@ public class PugaGotchi {
                         mopszi.egeszsegFenntart(masodikUtasitas);
                         break;
                     case 3: //játék, csak akkor ha az energia 10 felett van
-                        if (mopszi.energia < 10) {
+                        if (mopszi.getEnergia() < 10) {
                             System.out.println("A kutyus túl fáradt!!! Így csak enni vagy aludni van ereje.");
                             break;
                         } else {
@@ -67,8 +59,8 @@ public class PugaGotchi {
                         }
                         break;
                     case 4:// munka, csak akkor, ha a rendetlenség 40 alatt van, és az energia 10 felett
-                        if (mopszi.rendetlenseg < 40) {
-                            if (mopszi.energia < 10) {
+                        if (mopszi.getRendetlenseg() < 40) {
+                            if (mopszi.getEnergia() < 10) {
                                 System.out.println("A kutyus túl fáradt!!! Így csak enni vagy aludni van ereje.");
                                 break;
                             } else {
@@ -79,12 +71,13 @@ public class PugaGotchi {
                                 mopszi.dolgozik(masodikUtasitas);
                                 break;
                             }
-                        } else if (mopszi.rendetlenseg >= 40) {
-                            System.out.println("Szép próbálkozás, de a kutyus rendetlensége túl magas, nem tud dolgozni így!");
+                        } else if (mopszi.getRendetlenseg() >= 40) {
+                            System.out.println("Szép próbálkozás, de a kutyus rendetlensége túl magas, (" + mopszi.getRendetlenseg() + ") nem tud dolgozni így! A rendetlenségnek 40 alatt kell lennie, hogy dolgozhass.");
                             break;
                         }
-                    case 5: //
+                    case 5: //alvás, új kör kezdés
                         System.out.println("Szép álmokat kutyus!");
+                        System.out.println("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-");
                         mopszi.alszik();
                         ujKor = true;
                         break;
@@ -99,5 +92,3 @@ public class PugaGotchi {
 
         }
     }
-
-
