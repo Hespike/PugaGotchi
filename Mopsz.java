@@ -48,6 +48,21 @@ public class Mopsz {
                 energia += 12;
                 penz -= 20;
                 break;
+            default:
+                System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                break;
+        }
+        if (energia < 0) {
+            energia = 0;
+        }
+        if (energia > 100) {
+            energia = 100;
+        }
+        if (jollakotsag > 100) {
+            jollakotsag = 100;
+        }
+        if (penz < 0) {
+            penz = 0;
         }
     }
 
@@ -66,14 +81,23 @@ public class Mopsz {
                 penz -= 25;
                 break;
             case 4: //maximalizáló ital
-                 jollakotsag = 100;
-                 egeszseg = 100;
-                 kedv = 100;
-                 energia = 100;
-                 rendetlenseg = 100;
-                 penz -= 100;
-                 break;
+                jollakotsag = 100;
+                egeszseg = 100;
+                kedv = 100;
+                energia = 100;
+                rendetlenseg = 100;
+                penz -= 100;
+                break;
+            default:
+                System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                break;
 
+        }
+        if (penz < 0) {
+            penz = 0;
+        }
+        if (egeszseg > 100) {
+            egeszseg = 100;
         }
     }
 
@@ -99,7 +123,22 @@ public class Mopsz {
                 egeszseg -= 10;
                 rendetlenseg -= 10;
                 break;
+            default:
+                System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                break;
 
+        }
+        if (energia < 0) {
+            energia = 0;
+        }
+        if (penz < 0) {
+            penz = 0;
+        }
+        if (rendetlenseg < 0) {
+            rendetlenseg = 0;
+        }
+        if (egeszseg < 0) {
+            egeszseg = 0;
         }
     }
 
@@ -120,9 +159,38 @@ public class Mopsz {
                 energia -= random.nextInt(30 - 8) + 8;
                 egeszseg -= random.nextInt(20 - 10) + 10;
                 break;
+            default:
+                System.out.println("Ez sajnos nem sikerült! A terminál által kiírt számok közül egyet írj be.");
+                break;
+        } //energia és egészség nem mehet 0 alá
+        if (energia < 0) {
+            energia = 0;
+        }
+        if (egeszseg < 0) {
+            egeszseg = 0;
+        }
+
+    }
+
+    public void alszik(){
+        energia += random.nextInt(50 - 30) + 30;
+        jollakotsag -= 8;
+        egeszseg -= 5;
+        if (energia > 100){
+            energia = 100;
+        }
+        if (jollakotsag < 0){
+            jollakotsag = 0;
+        }
+        if (egeszseg < 0){
+            egeszseg = 0;
+
         }
     }
 
+
+
+    //getterek-setterek
     public int getJollakotsag() {
         return jollakotsag;
     }
