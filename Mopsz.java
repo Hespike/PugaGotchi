@@ -1,5 +1,5 @@
 import java.util.Random;
-import java.util.Scanner;
+import java.util.Scanner; 
 
 public class Mopsz {
     private static int penz = 6;
@@ -19,6 +19,7 @@ public class Mopsz {
     private int konzerv = 0;
     private int energiaItal = 0;
     Scanner sc = new Scanner(System.in);
+    
 //ételvétel
     public void jutalomVetel() {
         if (getPenz() >= 4) {
